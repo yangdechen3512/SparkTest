@@ -8,7 +8,7 @@ import org.apache.spark.streaming.{Seconds, StreamingContext}
 object StreamWindow {
 
   def main()(args: Array[String]): Unit ={
-    Logger.getLogger("org.apache.spark").setLevel(Level.OFF)
+    Logger.getLogger("org.apache.spark").setLevel(Level.WARN)
     Logger.getLogger("org.apache.eclipse.jetty.server").setLevel(Level.OFF)
 
     val conf = new SparkConf().setMaster("local[*]").setAppName("StreamWindowTest")

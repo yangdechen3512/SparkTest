@@ -25,6 +25,8 @@ object test {
     println(result4)
     sc.stop()
     println(findFirst(Array("h","a","g"),"a"))
+    val t = new Teacher(33, "Alice")
+    println(t.age)
   }
 
   def findFirst(ss : Array[String], key: String): Int = {
@@ -37,3 +39,16 @@ object test {
   }
 
 }
+
+class Teacher{
+  var age:Int = _
+  var name: String = _
+
+  def this(age:Int,name:String){
+    this()
+    this.age = age
+    this.name = name
+  }
+}
+
+
