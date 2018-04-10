@@ -10,10 +10,10 @@ object StreamSocket {
     Logger.getLogger("org.apache.spark").setLevel(Level.WARN)
     Logger.getLogger("org.apache.eclipse.jetty.server").setLevel(Level.OFF)
 
-    val conf = new SparkConf().setAppName("NetworkWordCount").setMaster("local[*]")
+    val conf = new SparkConf().setAppName("NetworkWordCount").setMaster("yarn-client")
     val ssc = new StreamingContext(conf, Seconds(10))
 
-    val lines = ssc.socketTextStream("localhost", 1111, StorageLevel.MEMORY_ONLY_2)// 服务器地址，端口
+    val lines = ssc.socketTextStream("192.168.88.202", 2222, StorageLevel.MEMORY_ONLY_2)// 服务器地址，端口
 //    lines.count().map(cnt => "Received " + cnt + " ----" ).print()
     val words = lines.flatMap(_.split(" "))
     val wordCounts = words.map(x => (x, 1)).reduceByKey(_ + _)
